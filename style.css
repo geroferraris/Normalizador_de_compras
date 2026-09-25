@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f2f2f2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #222;
+}
+
+.app {
+    width: min(100%, 600px);
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    width: 100%;
+    border: 0;
+    background: #007aff;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.arrow {
+    transition: transform 0.2s;
+}
+
+.card.collapsed .arrow {
+    transform: rotate(-90deg);
+}
+
+.card.collapsed .card-content {
+    display: none;
+}
+
+.card-content {
+    padding: 0 18px 18px;
+}
+
+.comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.product h2 {
+    margin: 0 0 14px;
+    font-size: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input,
+select {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 5px;
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 9px;
+    background: white;
+    font-size: 18px;
+}
+
+.unit-input {
+    display: flex;
+    gap: 8px;
+}
+
+.unit-input input {
+    flex: 1;
+}
+
+.unit-input select {
+    width: 90px;
+}
+
+.calculate-button,
+.secondary-button {
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.calculate-button {
+    width: 100%;
+    margin-top: 16px;
+    background: #34c759;
+    color: white;
+}
+
+.secondary-button {
+    background: #ff3b30;
+    color: white;
+}
+
+.result {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #ddd;
+}
+
+
+.result-value {
+    display: block;
+    margin-top: 4px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.volume-note {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #666;
+}
+
+.title-container {
+    background: #34c759;
+    color: white;
+    border-radius: 12px;
+    padding: 8px 14px;
+    width: fit-content;
+}
+
+.title-container h1 {
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background: #242424;
+        color: #eee;
+    }
+
+   .title-container {
+        background: #121212;
+        color: #30d158;
+    }
+
+    .card-header {
+        background: #1e1e1e;
+        color: #007aff;
+    }
+
+    .card {
+        background: #121212;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .product {
+        border-color: #444;
+    }
+
+    input,
+    select {
+        background: #2a2a2a;
+        color: #eee;
+        border-color: #555;
+    }
+
+    .result {
+        border-top-color: #444;
+    }
+
+    .result-value {
+        color: #fff;
+    }
+
+    .unit-note,
+    .result span {
+        color: #aaa;
+    }
+
+    .calculate-button {
+        background: #242424;
+        color: #30d158;
+    }
+
+    .secondary-button {
+        background: #121212;
+        color: #ff453a;
+    }
+}
