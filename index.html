@@ -7,6 +7,745 @@
     <title>Normalizador</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="apple-touch-icon"
+        href="icon.png"
+    >
+
+    <link
+        rel="icon"
+        href="icon.png"
+    >
+</head>
+
+<body>
+
+    <header class="app-header">
+        <div>
+            <div class="title-container">
+                <h1>Normalizador</h1>
+            </div>
+
+            <p>Compará precios según cantidad, distancia, peso o volumen.</p>
+        </div>
+
+        <button id="resetAll" class="secondary-button">
+            Limpiar
+        </button>
+    </header>
+
+
+    <main class="cards">
+
+
+        <!-- =========================
+             CANTIDAD
+        ========================== -->
+
+        <section class="card" data-category="cantidad">
+
+            <button class="card-header" type="button">
+                <span>Cantidad</span>
+                <span class="card-arrow">▼</span>
+            </button>
+
+            <div class="card-content">
+
+                <!-- PRODUCTO A -->
+
+                <div class="product">
+
+                    <h2>A</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-content"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTO B -->
+
+                <div class="product">
+
+                    <h2>B</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-content"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <button class="calculate-button" type="button">
+                    Calcular
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             DISTANCIA
+        ========================== -->
+
+        <section class="card" data-category="distancia">
+
+            <button class="card-header" type="button">
+                <span>Distancia</span>
+                <span class="card-arrow">▼</span>
+            </button>
+
+            <div class="card-content">
+
+                <!-- PRODUCTO A -->
+
+                <div class="product">
+
+                    <h2>A</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Distancia por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="m">m</option>
+                                <option value="cm">cm</option>
+                                <option value="mm">mm</option>
+                                <option value="km">km</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTO B -->
+
+                <div class="product">
+
+                    <h2>B</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Distancia por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="m">m</option>
+                                <option value="cm">cm</option>
+                                <option value="mm">mm</option>
+                                <option value="km">km</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <button class="calculate-button" type="button">
+                    Calcular
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PESO
+        ========================== -->
+
+        <section class="card" data-category="peso">
+
+            <button class="card-header" type="button">
+                <span>Peso</span>
+                <span class="card-arrow">▼</span>
+            </button>
+
+            <div class="card-content">
+
+                <!-- PRODUCTO A -->
+
+                <div class="product">
+
+                    <h2>A</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Peso por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="g">g</option>
+                                <option value="kg">kg</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTO B -->
+
+                <div class="product">
+
+                    <h2>B</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Peso por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="g">g</option>
+                                <option value="kg">kg</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <button class="calculate-button" type="button">
+                    Calcular
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             VOLUMEN
+        ========================== -->
+
+        <section class="card" data-category="volumen">
+
+            <button class="card-header" type="button">
+                <span>Volumen</span>
+                <span class="card-arrow">▼</span>
+            </button>
+
+            <div class="card-content">
+
+                <!-- PRODUCTO A -->
+
+                <div class="product">
+
+                    <h2>A</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Volumen por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="ml">mL</option>
+                                <option value="l">L</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <small class="unit-note">
+                        cc = mL
+                    </small>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTO B -->
+
+                <div class="product">
+
+                    <h2>B</h2>
+
+                    <label>
+                        Paquetes a comprar
+                        <input
+                            type="number"
+                            class="input-packages"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Unidades por paquete
+                        <input
+                            type="number"
+                            class="input-units"
+                            min="1"
+                            max="50"
+                            step="1"
+                            inputmode="numeric"
+                        >
+                    </label>
+
+                    <label>
+                        Volumen por unidad
+
+                        <div class="unit-input">
+
+                            <input
+                                type="text"
+                                class="input-content"
+                                inputmode="decimal"
+                            >
+
+                            <select class="input-unit">
+                                <option value="ml">mL</option>
+                                <option value="l">L</option>
+                            </select>
+
+                        </div>
+                    </label>
+
+                    <small class="unit-note">
+                        cc = mL
+                    </small>
+
+                    <label>
+                        Precio por paquete
+                        <input
+                            type="text"
+                            class="input-price"
+                            inputmode="decimal"
+                            placeholder="$"
+                        >
+                    </label>
+
+                    <div class="result">
+
+                        <div class="result-total">
+                            Total:
+                            <span class="total-price">—</span>
+                        </div>
+
+                        <div class="result-quantity">
+                            Cantidad:
+                            <span class="total-quantity">—</span>
+                        </div>
+
+                        <span class="result-value">—</span>
+
+                    </div>
+
+                </div>
+
+
+                <button class="calculate-button" type="button">
+                    Calcular
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!--<script src="app.js"></script> -->
+    <script src="app.js?v=2"></script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Normalizador</title>
+
+    <link rel="stylesheet" href="style.css">
     <link
         rel="apple-touch-icon"
         href="icon.png"
