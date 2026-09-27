@@ -1,3 +1,4 @@
+
 const STORAGE_KEY = "normalizador_v02";
 
 // ==============================
@@ -24,6 +25,12 @@ function formatMoney(value) {
         currency: "ARS",
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
+    }).format(value);
+}
+
+function formatNumber(value) {
+    return new Intl.NumberFormat("es-AR", {
+        maximumFractionDigits: 3
     }).format(value);
 }
 
@@ -188,6 +195,10 @@ function loadState() {
             card.classList.add("collapsed");
         });
 
+        document.querySelectorAll(".input-packages").forEach(input => {
+            input.value = "1";
+        });
+
         saveState();
 
         return;
@@ -253,6 +264,10 @@ function calculateCard(card) {
 
     products.forEach(product => {
 
+        // --------------------------------
+        // Datos básicos
+        // --------------------------------
+
         const packages = parseNumber(
             product.querySelector(".input-packages")?.value
         );
@@ -266,25 +281,46 @@ function calculateCard(card) {
         );
 
 
-        let total = 0;
+        // --------------------------------
+        // Variables del cálculo
+        // --------------------------------
+
+        // Contenido de UN paquete, convertido
+        // a la unidad base correspondiente.
+        let packageQuantity = 0;
+
+        // Cantidad total que se compra.
+        // Se mantiene en la unidad introducida.
+        let totalQuantity = 0;
+
+        // Unidad de la cantidad total.
+        let quantityUnit = "";
+
+        // Sufijo del precio normalizado.
         let suffix = "";
 
 
-        // ------------------------------
+        // --------------------------------
         // Cantidad
-        // ------------------------------
+        // --------------------------------
 
         if (category === "cantidad") {
 
-            total = packages * content;
+            packageQuantity = content;
+
+            totalQuantity =
+                packages *
+                content;
+
+            quantityUnit = "unidades";
 
             suffix = "/ unidad";
         }
 
 
-        // ------------------------------
+        // --------------------------------
         // Distancia
-        // ------------------------------
+        // --------------------------------
 
         else if (category === "distancia") {
 
@@ -295,22 +331,32 @@ function calculateCard(card) {
             const unit =
                 product.querySelector(".input-unit")?.value;
 
-            const distance =
+            // Distancia de una unidad en metros.
+            const distanceInMeters =
                 content *
                 (DISTANCE_TO_METERS[unit] || 1);
 
-            total =
+            // Distancia de UN paquete en metros.
+            packageQuantity =
+                units *
+                distanceInMeters;
+
+            // Distancia total comprada,
+            // manteniendo la unidad introducida.
+            totalQuantity =
                 packages *
                 units *
-                distance;
+                content;
+
+            quantityUnit = unit;
 
             suffix = "/ m";
         }
 
 
-        // ------------------------------
+        // --------------------------------
         // Peso
-        // ------------------------------
+        // --------------------------------
 
         else if (category === "peso") {
 
@@ -321,22 +367,32 @@ function calculateCard(card) {
             const unit =
                 product.querySelector(".input-unit")?.value;
 
-            const weight =
+            // Peso de una unidad en kg.
+            const weightInKg =
                 content *
                 (WEIGHT_TO_KG[unit] || 1);
 
-            total =
+            // Peso de UN paquete en kg.
+            packageQuantity =
+                units *
+                weightInKg;
+
+            // Peso total comprado,
+            // manteniendo la unidad introducida.
+            totalQuantity =
                 packages *
                 units *
-                weight;
+                content;
+
+            quantityUnit = unit;
 
             suffix = "/ kg";
         }
 
 
-        // ------------------------------
+        // --------------------------------
         // Volumen
-        // ------------------------------
+        // --------------------------------
 
         else if (category === "volumen") {
 
@@ -347,35 +403,99 @@ function calculateCard(card) {
             const unit =
                 product.querySelector(".input-unit")?.value;
 
-            const volume =
+            // Volumen de una unidad en litros.
+            const volumeInLiters =
                 content *
                 (VOLUME_TO_LITERS[unit] || 1);
 
-            total =
+            // Volumen de UN paquete en litros.
+            packageQuantity =
+                units *
+                volumeInLiters;
+
+            // Volumen total comprado,
+            // manteniendo la unidad introducida.
+            totalQuantity =
                 packages *
                 units *
-                volume;
+                content;
+
+            quantityUnit = unit;
 
             suffix = "/ L";
         }
 
 
+        // --------------------------------
+        // Elementos del resultado
+        // --------------------------------
+
         const result =
             product.querySelector(".result-value");
+
+        const totalPriceElement =
+            product.querySelector(".total-price");
+
+        const totalQuantityElement =
+            product.querySelector(".total-quantity");
 
 
         if (!result) return;
 
 
-        if (total > 0 && price >= 0) {
+        // --------------------------------
+        // Cálculos finales
+        // --------------------------------
+
+        // Gasto real de todos los paquetes.
+        const totalPrice =
+            packages *
+            price;
+
+
+        // El precio normalizado utiliza EXCLUSIVAMENTE:
+        // precio de UN paquete
+        // /
+        // contenido de UN paquete.
+        if (
+            packageQuantity > 0 &&
+            price >= 0
+        ) {
 
             const normalizedPrice =
-                price / total;
+                price /
+                packageQuantity;
 
+
+            // Precio total
+            if (totalPriceElement) {
+
+                totalPriceElement.textContent =
+                    formatMoney(totalPrice);
+            }
+
+
+            // Cantidad total
+            if (totalQuantityElement) {
+
+                totalQuantityElement.textContent =
+                    `${formatNumber(totalQuantity)} ${quantityUnit}`;
+            }
+
+
+            // Precio normalizado
             result.textContent =
                 `${formatMoney(normalizedPrice)} ${suffix}`;
 
         } else {
+
+            if (totalPriceElement) {
+                totalPriceElement.textContent = "—";
+            }
+
+            if (totalQuantityElement) {
+                totalQuantityElement.textContent = "—";
+            }
 
             result.textContent = "—";
         }
