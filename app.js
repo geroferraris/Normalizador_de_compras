@@ -341,14 +341,13 @@ function calculateCard(card) {
                 units *
                 distanceInMeters;
 
-            // Distancia total comprada,
-            // manteniendo la unidad introducida.
+            // Distancia total comprada, expresada en metros.
             totalQuantity =
                 packages *
                 units *
-                content;
+                distanceInMeters;
 
-            quantityUnit = unit;
+            quantityUnit = "m";
 
             suffix = "/ m";
         }
@@ -377,14 +376,13 @@ function calculateCard(card) {
                 units *
                 weightInKg;
 
-            // Peso total comprado,
-            // manteniendo la unidad introducida.
+            // Peso total comprado, expresado en kg.
             totalQuantity =
                 packages *
                 units *
-                content;
+                weightInKg;
 
-            quantityUnit = unit;
+            quantityUnit = "kg";
 
             suffix = "/ kg";
         }
@@ -413,14 +411,13 @@ function calculateCard(card) {
                 units *
                 volumeInLiters;
 
-            // Volumen total comprado,
-            // manteniendo la unidad introducida.
+            // Volumen total comprado, expresado en litros.
             totalQuantity =
                 packages *
                 units *
-                content;
+                volumeInLiters;
 
-            quantityUnit = unit;
+            quantityUnit = "L";
 
             suffix = "/ L";
         }
